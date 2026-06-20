@@ -1,7 +1,7 @@
-axios.get("http://localhost:5000/departmentStats")
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../api";
 
 function Departments() {
 
@@ -14,7 +14,7 @@ function Departments() {
 
     axios
       .get(
-        "http://localhost:5000/departmentStats"
+        `${API_BASE_URL}/departmentStats`
       )
       .then((response) => {
 

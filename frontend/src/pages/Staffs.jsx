@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { API_BASE_URL } from "../api";
 
 function Staffs() {
 
@@ -23,7 +23,7 @@ const addStaff = () => {
 
     axios
       .post(
-        "http://localhost:5000/addStaff",
+        `${API_BASE_URL}/addStaff`,
         {
           staff_name: staffName,
           email: email,
@@ -42,7 +42,7 @@ const addStaff = () => {
   useEffect(() => {
 
     axios
-      .get("http://localhost:5000/staffs")
+      .get(`${API_BASE_URL}/staffs`)
       .then((response) => {
 
         setStaffs(response.data);
@@ -53,7 +53,7 @@ const addStaff = () => {
 
   axios
     .delete(
-      `http://localhost:5000/deleteStaff/${id}`
+      `${API_BASE_URL}/deleteStaff/${id}`
     )
     .then(() => {
 

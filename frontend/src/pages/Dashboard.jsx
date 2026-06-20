@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../api";
 function Dashboard() {
   const navigate = useNavigate();
   const [totalStudents, setTotalStudents] = useState(0);
@@ -13,30 +14,30 @@ useState(0);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/totalStudents")
+      .get(`${API_BASE_URL}/totalStudents`)
       .then((response) => {
         setTotalStudents(response.data[0].total);
       });
 
     axios
-      .get("http://localhost:5000/totalDepartments")
+      .get(`${API_BASE_URL}/totalDepartments`)
       .then((response) => {
         setTotalDepartments(response.data[0].total);
       });
 
     axios
-      .get("http://localhost:5000/totalStaffs")
+      .get(`${API_BASE_URL}/totalStaffs`)
       .then((response) => {
         setTotalStaffs(response.data[0].total);
       });
       axios
-  .get("http://localhost:5000/recentStudents")
+  .get(`${API_BASE_URL}/recentStudents`)
   .then((response) => {
 
     setRecentStudents(response.data);
   });
   axios
-  .get("http://localhost:5000/staffCount")
+  .get(`${API_BASE_URL}/staffCount`)
   .then((response) => {
     console.log(response.data);
 

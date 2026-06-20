@@ -1,6 +1,7 @@
 import logo from "../assets/logo.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../api";
 
 function Login() {
 
@@ -17,7 +18,7 @@ function Login() {
     try {
 
       const response = await axios.post(
-        "http://localhost:5000/login",
+        `${API_BASE_URL}/login`,
         {
           username,
           password

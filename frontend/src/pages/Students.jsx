@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../api";
 
 function Students() {
 
@@ -26,7 +27,7 @@ function Students() {
   const fetchStudents = () => {
 
     axios
-      .get("http://localhost:5000/students")
+      .get(`${API_BASE_URL}/students`)
       .then((response) => {
 
         setStudents(response.data);
@@ -53,7 +54,7 @@ function Students() {
     formData.append("image", profileImage);
 
     axios
-      .post("http://localhost:5000/upload", formData)
+      .post(`${API_BASE_URL}/upload`, formData)
       .then((uploadResponse) => {
 
         const imageName = uploadResponse.data;
@@ -63,7 +64,7 @@ function Students() {
 
           axios
             .put(
-              `http://localhost:5000/updateStudent/${editId}`,
+              `${API_BASE_URL}/updateStudent/${editId}`,
               {
                 name,
                 email,
@@ -96,7 +97,7 @@ function Students() {
 
           axios
             .post(
-              "http://localhost:5000/addStudent",
+              `${API_BASE_URL}/addStudent`,
               {
                 name,
                 email,
@@ -153,7 +154,7 @@ function Students() {
 
       axios
         .delete(
-          `http://localhost:5000/deleteStudent/${id}`
+          `${API_BASE_URL}/deleteStudent/${id}`
         )
         .then((response) => {
 
@@ -167,7 +168,7 @@ function Students() {
 
   axios
     .put(
-      `http://localhost:5000/toggleStatus/${id}`
+      `${API_BASE_URL}/toggleStatus/${id}`
     )
     .then((response) => {
 
@@ -516,7 +517,7 @@ function Students() {
                       >
 
                         <img
-  src={`http://localhost:5000/uploads/${student.profile_image}`}
+  src={`${API_BASE_URL}/uploads/${student.profile_image}`}
   alt="profile"
   style={{
     width: "45px",
